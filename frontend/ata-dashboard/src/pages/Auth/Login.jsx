@@ -138,9 +138,14 @@ const Login = () => {
       </div>
 
       {/* Sección Derecha: Ilustración */}
-      <div className="w-1/2 bg-[#010133] text-white flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold">ATA-Dashboard</h1>
-        <p className="mt-2">Bienvenido/a</p>
+      <div className="w-1/2  text-white flex flex-col justify-center items-center relative bg-cover bg-center bg-no-repeat" 
+           style={{backgroundImage: 'frontend\\ata-dashboard\\public\\images.jpg'}}>
+        {/* Overlay para mantener la legibilidad del texto */}
+        <div className="absolute inset-0 bg-[#010133] bg-opacity-60"></div>
+                <div className="relative z-10 text-center">
+          <h1 className="text-3xl font-bold">ATA-Dashboard</h1>
+          <p className="mt-2">Bienvenido/a</p>
+        </div>
       </div>
     </div>
   );

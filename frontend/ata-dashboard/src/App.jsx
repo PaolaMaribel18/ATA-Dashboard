@@ -12,6 +12,12 @@ import ManageUsers from './pages/Admin/ManageUsers';
 import UserDashboard from './pages/User/UserDashboard';
 import UserProfile from './pages/User/Profile';
 import UserReports from './pages/User/UserReports';
+import UserAlerts from './pages/User/UserAlerts,'; // Importar el nuevo componente
+import UserSupport from './pages/User/UserSupport'; // Nuevo componente de soporte
+
+
+import TechDashboard from './pages/Tech/TechDashboard';
+import TechTickets from './pages/Tech/TechTickets';
 
 import PrivateRoute from './routes/PrivateRoute';
 
@@ -48,9 +54,17 @@ const routes = [
         <Route path="/user/dashboard" element={<UserDashboard />} />
         <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/user/reports" element={<UserReports />} />
-        <Route path="/user/alertas" element={<Alerts />} />
-        <Route path="/user/support" element={<Support />} />
+        <Route path="/user/alerts" element={<UserAlerts />} /> {/* Nueva ruta */}
+        <Route path="/user/support" element={<UserSupport />} /> {/* Nueva ruta de soporte */}
       </Route>
+
+      
+      {/* Technician routes */}
+      <Route element={<PrivateRoute allowedRoles={["technician"]} />}>
+        <Route path="/tech/dashboard" element={<TechDashboard />} />
+        <Route path="/tech/tickets" element={<TechTickets />} />
+      </Route>
+
     </Routes>
   </Router>,
 ];

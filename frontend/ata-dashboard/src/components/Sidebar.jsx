@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   FaChartPie, FaFileAlt, FaBell, FaSignOutAlt, FaUserCircle,
-  FaPhone, FaTools, FaUserCog, FaMicrochip, FaUsers, FaBars, 
+  FaPhone, FaTools, FaUserCog, FaMicrochip, FaUsers, FaBars, FaTicketAlt
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ const Sidebar = () => {
       { name: 'Dashboard', icon: <FaChartPie />, route: '/user/dashboard' },
       { name: 'Reportes', icon: <FaFileAlt />, route: '/user/reports' },
       { name: 'Alertas', icon: <FaBell />, route: '/user/alerts' },
-      { name: 'Soporte técnico', icon: <fa-screwdriver-wrench/>, route: '/user/soporte' },
+      { name: 'Soporte técnico', icon: <fa-screwdriver-wrench/>, route: '/user/support' },
     ],
     administrator: [
       { name: 'Dashboard', icon: <FaChartPie />, route: '/admin/dashboard' },
@@ -42,9 +42,9 @@ const Sidebar = () => {
       { name: 'Tecnicos', icon: <FaUsers />, route: '/admin/tech' },
       { name: 'Alertas', icon: <FaBell />, route: '/admin/alerts' },
     ],
-    technician: [
+   technician: [
       { name: 'Dashboard', icon: <FaChartPie />, route: '/tech/dashboard' },
-      { name: 'Tareas asignadas', icon: <FaTools />, route: '/tech/tasks' },
+      { name: 'Tickets Asignados', icon: <FaTicketAlt />, route: '/tech/tickets' },
     ],
     superadmin: [
       { name: 'Dashboard', icon: <FaChartPie />, route: '/superadmin/dashboard' },
