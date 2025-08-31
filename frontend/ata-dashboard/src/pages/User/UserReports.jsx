@@ -3,6 +3,7 @@ import Sidebar from '../../components/Sidebar';
 import Navbar from '../../components/Navbar';
 import axios from 'axios';
 import { FaDownload, FaSpinner } from 'react-icons/fa';
+import { API_ENDPOINTS, getAuthHeaders } from '../../config/api';
 
 const UserReports = () => {
   const [format, setFormat] = useState('pdf');
@@ -18,9 +19,8 @@ const UserReports = () => {
 
   const fetchReportHistory = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:8000/reports/mine', {
-        headers: { Authorization: `Bearer ${token}` },
+      const res = await axios.get(API_ENDPOINTS.REPORTS_MINE, {
+        headers: getAuthHeaders(),
       });
       setReportHistory(res.data);
     } catch (err) {
@@ -35,18 +35,14 @@ const UserReports = () => {
     setSuccess(null);
 
     try {
-      const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:8000/reports/create',
+        API_ENDPOINTS.REPORTS_CREATE,
         {
           parameters: {},
           format: format
         },
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
+          headers: getAuthHeaders()
         }
       );
       setSuccess('Reporte generado exitosamente');
@@ -64,15 +60,11 @@ const UserReports = () => {
     setError(null);
     
     try {
-      const token = localStorage.getItem('token');
-      
-      console.log(`Descargando reporte: ${reportId}`);
-      
       const response = await axios.get(
-        `http://localhost:8000/reports/download/${reportId}`,
+        API_ENDPOINTS.REPORTS_DOWNLOAD(reportId),
         {
           headers: { 
-            Authorization: `Bearer ${token}`,
+            ...getAuthHeaders(),
             'Accept': '*/*'
           },
           responseType: 'blob',
