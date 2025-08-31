@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { API_ENDPOINTS } from '../../config/api';
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
     setErrorMsg(''); // limpia errores previos
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/auth/login', {
+      const response = await fetch(API_ENDPOINTS.LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
